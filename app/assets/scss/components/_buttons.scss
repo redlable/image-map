@@ -1,0 +1,137 @@
+.btn {
+  @include font-size(15);
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba($blue, .5);
+  color: $white;
+  display: inline-block;
+  font-weight: $medium;
+  overflow: hidden;
+  padding: 18px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+
+  @include media-q(min, 375) {
+    @include font-size(18);
+    padding: 18px 57px;
+  }
+
+  @include media-q(min, 1024) {
+    padding: 18px 57px;
+  }
+
+  &:after {
+    background-image: $gradient;
+    content: '';
+    padding-top: 150%;
+    position: absolute;
+    top: 0;
+    left: -5%;
+    right: -5%;
+    bottom: 0;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform .6s;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  .safari & {
+    transform: translate3d(0, 0, 0);
+
+    &:after {
+      padding-top: 300%;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 10px 30px -8px rgba($blue, .5);
+    text-decoration: none;
+
+    &:after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+
+  &:active {
+    box-shadow: 0 10px 30px -20px rgba($blue, .5);
+  }
+}
+
+.btn-white {
+  background: $white;
+  color: $purple;
+
+  &:after {
+    content: none;
+  }
+
+  &:hover {
+    background: $white;
+    box-shadow: 0 10px 30px -8px rgba($blue, .5);
+  }
+
+  &:active {
+    background: $white;
+    box-shadow: 0 10px 30px -20px rgba($blue, .5);
+  }
+}
+
+.btn-transparent {
+  background: transparent;
+  border: 2px solid $white;
+  box-shadow: none;
+
+  &:after {
+    content: none;
+  }
+
+  &:hover {
+    background: rgba($white, .1);
+    box-shadow: none;
+  }
+}
+
+.play-btn {
+  @include same(76px, height, width);
+  background: url(../img/general/play-btn.png) center top no-repeat;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  &:hover {
+    background-position: center bottom;
+  }
+}
+
+.pdf-btn {
+  background: url(../img/general/pdf-icon.png) center top no-repeat;
+  display: inline-block;
+  height: 25px;
+  vertical-align: top;
+  width: 68px;
+
+  &:hover {
+    background-position: center bottom;
+  }
+}
+
+.ext-link {
+  @include font-size(10);
+  background: url(../img/general/ext-link-icon.png) right top no-repeat;
+  color: $red;
+  display: inline-block;
+  font-weight: $bold;
+  min-height: 13px;
+  padding-right: 18px;
+  text-decoration: none;
+  vertical-align: top;
+
+  &:hover {
+    background-position: right bottom;
+    color: $red-light;
+  }
+}

@@ -1,0 +1,36 @@
+include ../vars
+include ../mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset="utf-8")
+    title #{pageTitle}
+    meta(http-equiv='X-UA-Compatible', content="IE = edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="keywords" content="")
+
+    link(rel="stylesheet" type='text/css' href="css/screen.css")
+
+  body(class=pageClass)
+    main.main-wrapper
+      include ../modules/header
+
+      //include ../modules/editor-tabs
+      //include ../modules/login-form
+
+      .content-container
+        block content
+
+    include ../modules/footer
+
+    //script(src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js")
+    //script(src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js")
+    script(src='app/bower_components/jquery/dist/jquery.js')
+    script(src="js/libs.min.js")
+    script(src="js/main.js")
+    //script(src="js/main-vue.js")
+
+    // External fonts
+

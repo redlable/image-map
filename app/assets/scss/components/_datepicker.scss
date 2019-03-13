@@ -1,0 +1,56 @@
+.ui-datepicker {
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba($black, .1);
+  overflow: hidden;
+  padding: 0;
+
+  .ui-datepicker-header {
+    @include font-size(15);
+    background: $blue;
+    border: none;
+    border-radius: 0;
+    color: $white;
+  }
+
+  select.ui-datepicker-year {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+  }
+
+  .ui-datepicker-calendar {
+    @include font-size(15);
+    background: #ececec;
+    margin: 0;
+  }
+
+  .ui-state-default {
+    background: $white;
+    border: none;
+    text-align: center;
+    transition: .3s ease;
+  }
+
+  &.ui-monthpicker {
+    .ui-state-default {
+      padding: 10px;
+    }
+  }
+
+  .ui-state-highlight {
+    background: $white;
+    color: $blue;
+  }
+
+  .ui-state-hover {
+    background: $grey-light;
+  }
+
+  .ui-state-active {
+    background: $green;
+    color: $white;
+  }
+}

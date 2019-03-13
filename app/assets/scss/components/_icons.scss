@@ -1,0 +1,31 @@
+.icons-list {
+
+  @include media-q(min, 768) {
+
+  }
+
+  &__item {
+
+    @include media-q(min, 768) {
+
+    }
+  }
+
+  &__link {
+
+  }
+
+  &__image {
+
+    @include media-q(min, 768) {
+
+    }
+  }
+
+  &__label {
+
+    @include media-q(min, 768) {
+
+    }
+  }
+}

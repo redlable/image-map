@@ -1,0 +1,52 @@
+// Fonts
+$opensans: 'Open Sans', Helvetica, Arial, sans-serif;
+$euclid-circular-b: 'Euclid Circular A Bold';
+$euclid-circular-r: 'Euclid Circular A Regular';
+
+//$roboto: 'Roboto', sans-serif;
+
+// Weights
+$light: 300;
+$normal: 400;
+$medium: 600;
+$bold: 700;
+
+// Layout
+$site-width: 1600px;
+$grid-gutter: 20px;
+$col-width: 65px;
+$columns: 12;
+//$content-width: $col-width * $columns + $grid-gutter * $columns - $grid-gutter;
+$content-width: 1440px;
+
+// Colors
+$white: #fff;
+$black: #000;
+
+$seashell: #f1f1f1;
+
+$grey-light: #c5c5c7;
+$grey: #6d6e72;
+$grey-dark: #333;
+
+$pink: #d900c7;
+
+$red: #af272f;
+$red-light: #E94B59;
+
+$green: #63c8bb;
+
+$blue: #3000FF;
+$blue-light: #0088ff;
+$blue-dark: #2f5597;
+
+$purple: #87339b;
+$purple-dark: #2e1159;
+
+$yellow: #cc0;
+
+$orange: #db8a06;
+
+// Gradients
+$gradient: linear-gradient(-246deg, $green 0%, $blue-dark 52%, $purple 100%);
+$gradient-m: linear-gradient(-246deg, #4483A5 0%, #3B5098 49%, #84329B 100%);

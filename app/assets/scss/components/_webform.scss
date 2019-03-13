@@ -1,0 +1,221 @@
+// Placeholders
+::-webkit-input-placeholder {
+  color: $grey-light;
+}
+
+::-moz-placeholder {
+  color: $grey-light;
+}
+
+// Firefox 19+
+:-moz-placeholder {
+  color: $grey-light;
+}
+
+// Firefox 18-
+:-ms-input-placeholder {
+  color: $grey-light;
+}
+
+::selection {
+  //background: $selection-color;
+}
+
+#user-login,
+#user-login-form,
+#user-pass {
+  background: $gradient;
+  box-shadow: 0 10px 30px rgba($blue, .5);
+  border-radius: 40px;
+  color: $white;
+  margin: 0 auto 40px;
+  max-width: 620px;
+  opacity: 0;
+  padding: 40px;
+  position: relative;
+  transform: scale(0);
+  transition: opacity .6s ease-out, transform .6s cubic-bezier(0, 0, 0.5, 1.3);
+  will-change: transform;
+  z-index: 1;
+
+  .form-item {
+    margin-bottom: 30px;
+  }
+
+  .form-text {
+    border-radius: 40px;
+    padding: 10px 20px;
+    width: 100%;
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  label,
+  .description {
+    margin-left: 15px;
+  }
+
+  .form-submit {
+    @extend .btn;
+    @extend .btn-transparent;
+  }
+}
+
+.form-item {
+  label {
+    display: inline-block;
+    font-weight: $bold;
+    margin-bottom: 7px;
+  }
+
+  .form-text {
+    margin-bottom: 5px;
+  }
+
+  .description {
+    @include font-size(14);
+  }
+}
+
+.form-text {
+
+}
+
+select {
+  @include font-size(12);
+  background: $white url(../img/general/select-arrow.png) center right no-repeat;
+  border: 1px solid $grey-light;
+  border-radius: 20px;
+  box-shadow: 0 1px 5px rgba($black, 0.1);
+  padding: 12px 35px 12px 15px;
+}
+
+.chosen-container {
+  width: 100% !important;
+
+  .chosen-choices {
+    @extend select;
+    background-image: url(../img/general/filter-arrow.png);
+    padding: 1px 40px 1px 4px;
+
+    li.search-choice {
+      background: $white;
+      border: 1px solid $grey-light;
+      border-radius: 16px;
+      padding: 8px 30px 8px 10px;
+
+      .search-choice-close {
+        @include same(9px, right, top);
+        @include same(11px, height, width);
+        background: url(../img/general/chosen-close-icon.png) center top no-repeat;
+
+        &:hover {
+          background-position: center bottom;
+        }
+      }
+    }
+  }
+}
+
+.form-radio {
+  @extend %element-invisible;
+
+  + label {
+    display: block;
+    margin-bottom: 13px;
+    padding: 1px 0 0 26px;
+    position: relative;
+
+    &:before,
+    &:after {
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+    }
+
+    &:before {
+      @include same(18px, height, width);
+      background: $white;
+      border: 1px solid $grey;
+      box-shadow: 0 1px 2px rgba($black, .2);
+      left: 0;
+      top: 0;
+    }
+
+    &:after {
+      @include same(8px, height, width);
+      background: transparent;
+      left: 5px;
+      top: 5px;
+      transition: background .3s ease;
+    }
+  }
+
+  &:hover {
+    + label {
+      &:after {
+        background: $grey;
+      }
+    }
+  }
+
+  &:checked {
+    + label {
+      &:after {
+        background: $grey;
+      }
+    }
+  }
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.form-submit {
+  @extend .btn;
+  cursor: pointer;
+}
+
+// Janrain markets
+.markets-switcher {
+  .login-header {
+    background: $red;
+    padding: 35px 48px 10px;
+  }
+
+  h2 {
+    color: $white;
+    font-weight: $normal;
+    margin: 0;
+  }
+
+  .login-contrent {
+    color: $grey;
+    padding: 40px 48px;
+  }
+
+  .description {
+    margin-bottom: 28px;
+  }
+
+  .markets-select {
+    margin-bottom: 35px;
+  }
+
+  .footer-description {
+    margin-bottom: 15px;
+  }
+}
+
+// Search form
+.search-form {
+
+}
+
+// Search results
+.search-results {
+
+}

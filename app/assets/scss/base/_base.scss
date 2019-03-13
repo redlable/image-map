@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  @include font-size(16);
+  color: $black;
+  font-family: $opensans;
+  line-height: 1.38;
+  min-width: 320px;
+  overflow-x: hidden;
+  word-break: break-word;
+  word-wrap: break-word;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  @include media-q(min, 768) {
+    @include font-size(16);
+  }
+}
+
+.ios {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img,
+svg {
+  height: auto;
+  max-width: 100%;
+}
+
+.embedded-entity {
+  > img {
+    margin-bottom: 30px;
+  }
+
+  &.align-center {
+    text-align: center;
+
+    img {
+      margin-bottom: 30px;
+    }
+  }
+
+  &.align-right {
+    margin-left: 30px;
+  }
+
+  &.align-left {
+    margin-right: 30px;
+  }
+}
+
+figcaption {
+  color: $grey;
+}
+
+iframe,
+object,
+embed {
+  max-width: 100%;
+}
+
+.responsive-video {
+  @extend %responsive-video;
+}
+
+sup,
+sub {
+  font-size: 10px;
+}
+
+.note {
+  color: $white;
+  margin: 20px 0 0;
+}
+
+// Drupal styles
+.fieldgroup {
+  border-width: 0;
+  padding: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+// Pfizer network
+.pfizer-login__connecting {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pfizer-login__container {
+  margin-top: 100px;
+}

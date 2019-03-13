@@ -1,0 +1,18 @@
+// Import components styles
+// Helpers: Variables / Mixins
+@import "utils/variables";
+@import "utils/mixins";
+
+.cke_editable {
+  // Base and global styles
+  // Typography
+  @import 'base/typography';
+
+  // Buttons
+  @import 'components/buttons';
+
+  .btn-transparent {
+    border-color: $black;
+    color: $black;
+  }
+}

@@ -1,0 +1,326 @@
+//------------------------------------------------------------------------------
+// include_font
+
+@mixin includefont($name) {
+  $url: unquote("../fonts/" + $name);
+
+  @font-face {
+    font-family: $name;
+    src: url($url + ".eot");
+    src: url($url + ".eot?#iefix") format("embedded-opentype"),
+    url($url + ".woff") format("woff"),
+    url($url + ".ttf") format("truetype"),
+    url($url + ".svg#" + $name) format("svg");
+  }
+}
+
+//-------------------------------------------------------------------------------
+// Font icon mixin
+
+//@mixin icon($content, $font) {
+//  &::before {
+//    font-family: $font;
+//    content: $content;
+//    @content;
+//  }
+//}
+
+@mixin icon($position: before, $icon: false, $styles: true) {
+  @if $position == both {
+    $position: 'before, &:after';
+  }
+  // Either a :before or :after pseudo-element, or both, defaulting to :before
+  &:#{$position} {
+    @if $icon {
+      // A particular icon has been specified
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      // Supportive icon styles required
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'pfizer_centrum_icons';
+    }
+    // Include any extra rules supplied for the pseudo-element
+    @content;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Font resizing
+@mixin font-size($size-value: 16) {
+  font-size: ($size-value / 16) + rem;
+}
+
+//------------------------------------------------------------------------------
+// BG opacity
+
+@mixin background-opacity($color, $opacity: .3) {
+  background: rgba($color, $opacity);
+}
+
+
+//------------------------------------------------------------------------------
+// Box-Shadow
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+// Psevdo Element
+
+@mixin psevdo-el($type, $h:auto, $w:auto) {
+  &:#{$type} {
+    content: "";
+    display: block;
+    height: $h;
+    width: $w;
+    @content;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Media queries
+// Accept two parameters Point and MIN/MAX value
+// @example: @include media-q(min, 980);
+@mixin media-q($extrema: null, $point: null, $orient: null) {
+
+  @if $extrema == 'min' {
+    $extrema: min;
+  }
+
+  @if $extrema == 'max' {
+    $extrema: max;
+  }
+
+  @if $orient == 'p' {
+    $orient: portrait
+  }
+
+  @if $orient == 'l' {
+    $orient: landscape
+  }
+
+  @if $orient == null {
+    @media only screen and (#{$extrema}-width: $point+'px') {
+      @content;
+    }
+  }
+
+  @else {
+    @media only screen and (#{$extrema}-width: $point+'px') and (orientation: #{$orient}) {
+      @content;
+    }
+  }
+}
+
+
+//-------------------------------------------------------------------------------
+// All style mixin
+
+@mixin reset-style-all() {
+  // Box-model
+  display: block;
+  float: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+
+  // Typography
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  text-align: center;
+
+  // Visual
+  border: 0 none;
+  border-radius: 0;
+
+  // Misc
+  opacity: 1;
+}
+
+//------------------------------------------------------------------------------
+// Group for most useful font rules: "font-size", "line-height" and "font-weight";
+//
+// Second argument of this mixin processed for "font-weight" value.
+//
+// @example:
+//   @font(12px, bold);
+//   @font(12px, 30px, thin);
+//@mixin font($size, $line-height: false, $weight: false) {
+//  font-size: $size;
+//
+//  // Try to get a value from "font-weights" map.
+//  $possible-weight: font-weight($line-height);
+//
+//  @if $possible-weight == null {
+//    // Check for one of defaults value.
+//    $defaults: bold, bolder, lighter, normal;
+//    $index: index($defaults, $line-height);
+//
+//    @if $index != null {
+//      $possible-weight: nth($defaults, $index);
+//    }
+//  }
+//
+//  @if $possible-weight != null {
+//    $line-height: false;
+//    font-weight: $possible-weight;
+//  }
+//  @elseif $weight != false {
+//    $value: font-weight($weight);
+//
+//    @if $value == null {
+//      $value: $weight;
+//    }
+//
+//    font-weight: $value;
+//  }
+//
+//  @if $line-height != false {
+//    line-height: $line-height;
+//  }
+//}
+
+// =============================================================================
+// Custom
+
+@mixin absolute($left: 0, $top: 0, $height: 100%, $width: 100%) {
+  position: absolute;
+  left: $left;
+  top: $top;
+  height: $height;
+  width: $width;
+}
+
+@mixin user-select($value: none) {
+  @include vendor-prefixes(user-select, $value, webkit, moz, ms);
+}
+
+@mixin box-sizing($value: border-box) {
+  @include vendor-prefixes(box-sizing, $value, webkit, moz);
+}
+
+@mixin box-shadow($value) {
+  @include vendor-prefixes(box-shadow, $value, webkit, moz);
+}
+
+@mixin inline-block($align: top) {
+  display: inline-block;
+  vertical-align: $align;
+}
+
+@mixin same($value, $properties...) {
+  @each $property in $properties {
+    #{$property}: $value;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Headings
+@mixin headings($from: 1, $to: 6){
+  @for $i from $from through $to{
+    h#{$i}{
+      @content
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Links
+@mixin links($color: $black, $hover: $black, $dec: false) {
+  color: $color;
+
+  @if $dec == true {  text-decoration: underline;  }
+  @if $dec == false {  text-decoration: none;  }
+
+  &:hover {
+    color: $hover;
+  }
+}
+
+@mixin flex-basis($value) {
+  flex-basis: $value;
+  max-width: $value;
+}
+
+// ----------------------------------------------------------------------------
+// Responsive video
+%responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; // 16/9 ratio
+  height: 0 !important;
+  overflow: hidden;
+  display: block;
+
+  iframe,
+  object,
+  embed,
+  .video-js {
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Hide element from view, but keep it for Screen readers
+%element-invisible,
+.element-invisible {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+
+// Vertical align IE fix
+//@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+//  &:after {
+//    content: '';
+//    display: block;
+//    min-height: inherit;
+//    font-size: 0;
+//  }
+//}
+
+//------------------------------------------------------------------------------
+// Keyframes
+@keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: inset 0 0 5px 5px #fff, 0 0 0 5px rgba(#fff, .5);
+  }
+  100% {
+    box-shadow: inset 0 0 5px 5px #fff, 0 0 0 5px rgba(#fff, .5);
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}

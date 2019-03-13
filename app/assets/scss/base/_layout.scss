@@ -1,0 +1,76 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-wrapper {
+  flex: 1 0 auto;
+
+  .ie & {
+    overflow: hidden;
+  }
+
+  // Fix for admin menu
+  .toolbar-fixed & {
+    position: relative;
+  }
+}
+
+.content-container {
+  margin: 0 auto;
+  max-width: $site-width;
+}
+
+#footer {
+  flex-shrink: 0;
+}
+
+.section-layout {
+  @include same(auto, margin-left, margin-right);
+  @include same(20px, padding-left, padding-right);
+  max-width: $content-width + 40px;
+
+  @include media-q(min, 1024) {
+    @include same($grid-gutter, padding-left, padding-right);
+    max-width: $content-width + $grid-gutter * 2;
+  }
+}
+
+.wysiwyg-content,
+.tags-container {
+  margin: 0 auto;
+  max-width: $content-width;
+}
+
+.page-user-login,
+.page-user-pass {
+  .main-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content-container {
+    margin: 0;
+    padding-top: 112px;
+  }
+}
+
+.page-user-canonical {
+  .main-wrapper {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content-container {
+    margin: 0;
+    padding: 200px 100px;
+    width: 100%;
+  }
+}

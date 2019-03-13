@@ -1,0 +1,36 @@
+include ../mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset="utf-8")
+    title #{title}
+    <!--[if IE]>
+    meta(http-equiv='X-UA-Compatible', content="IE = edge")
+    <![endif]-->
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="keywords" content="")
+
+    link(rel="stylesheet" type='text/css' href="css/screen.css")
+
+  body(class=pageClass)
+    .main-wrapper(style="background-color: pink;")
+      include ../modules/header
+
+      section.block-404__container
+        .block-404__content.section-layout
+          h1 404
+
+          h2.paragraph__title Page not found
+
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores consequuntur cupiditate in neque quibusdam reiciendis sint totam. Animi aut consequuntur cupiditate eligendi ipsa necessitatibus praesentium quidem rem sequi voluptas?
+
+          a(href="/" class="btn purple") Go home
+
+    include ../modules/footer
+
+    script(src="https://code.jquery.com/jquery-1.10.2.min.js")
+    script(src="js/libs.min.js")
+    script(src="js/jquery.resizeAction.js")
+    script(src="js/main.js")

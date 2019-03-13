@@ -1,0 +1,42 @@
+.teaser {
+  &__body {
+    border-bottom: 2px solid $seashell;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    //padding: 0 170px 10px 7px;
+    padding: 0 10px 10px 7px;
+
+    > div:not(.link-box) {
+      @include flex-basis(calc(100% - 170px));
+    }
+  }
+
+  h3 {
+    @include font-size(20);
+    color: $red;
+    margin-bottom: 5px;
+  }
+
+  &__author {
+    @include font-size(14);
+    color: $grey;
+    margin-bottom: 5px;
+  }
+
+  &__history {
+    margin-bottom: 10px;
+  }
+
+  &__history,
+  &__publish-info {
+    @include font-size(11);
+    color: $grey-light;
+  }
+
+  .link-box {
+    align-items: center;
+    display: flex;
+  }
+}
