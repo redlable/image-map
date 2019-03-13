@@ -1,4 +1,5 @@
-# image-map
+# image-map markup
 
-### Install npm packages `npm i`
-### run web server `gulp`
+Install npm packages `npm i`
+
+run web server `gulp`
