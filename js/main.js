@@ -256,19 +256,23 @@ if (window.location.hash.length) {
   })();
 
   (function imageMap() {
-    var $imageMap = $('.image-map');
+    var $imageMap = $('.image-map'),
+        $graphic = $('.graphic');
 
     $imageMap.on('click', function (e) {
       var $this = $(this),
           $target = $(e.target),
           $activeGraph = $('.' + $target.attr('alt'));
 
-      $('.graphic').removeClass('active');
-      $activeGraph.addClass('active');
+      if (!$activeGraph.is(':visible')) {
+        $graphic.fadeOut();
+        $activeGraph.fadeIn();
+      }
     });
 
     $('.clear').on('click', function () {
-      $('.graphic').removeClass('active');
+      $graphic.fadeOut();
+      $('.graphic.default').fadeIn();
     });
 
     $imageMap.imageMapResize();

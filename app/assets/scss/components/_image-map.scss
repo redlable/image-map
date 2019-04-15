@@ -20,7 +20,13 @@
 }
 
 .graphic {
+  background: #f7f7f7;
+  display: none;
+  padding: 25px 0 40px;
+  width: 100%;
+
   &.default {
+    display: block;
     position: relative;
     z-index: 1;
   }
@@ -31,7 +37,20 @@
     top: 0;
   }
 
-  &.active {
-    z-index: 1;
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__text {
+    margin-top: 35px;
+    padding: 0 20px;
+
+    @include media-q(min, 1024) {
+      @include flex-basis(310px);
+      margin: 60px 0 0 90px;
+      padding: 0;
+    }
   }
 }
